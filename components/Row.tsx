@@ -3,12 +3,12 @@ import { useRef } from "react";
 import { Movie } from "../typings";
 import Thumbnail from "./Thumbnail";
 import { useState } from "react";
+import { DocumentData } from "firebase/firestore";
 
 interface Props {
   title: string;
   //   when using Firebase
-  //   movie: Movie | DocumentData[]
-  movies: Movie[];
+    movies: Movie[] | DocumentData[]
 }
 
 export default function Row({ title, movies }: Props) {
