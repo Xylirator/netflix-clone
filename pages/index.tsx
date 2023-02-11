@@ -8,6 +8,7 @@ import Modal from "../components/Modal";
 import Plans from "../components/Plans";
 import Row from "../components/Row";
 import useAuth from "../hooks/useAuth";
+import useSubscription from "../hooks/useSubscription";
 import payments from "../lib/stripe";
 import { Movie } from "../typings";
 import requests from "../utils/requests";
@@ -35,12 +36,12 @@ const Home = ({
   trendingNow,
   products,
 }: Props) => {
-  const { loading } = useAuth();
+  const { user, loading} = useAuth();
+  const subscription = useSubscription(user);
   const showModal = useRecoilValue(modalState);
-  const subscription = false;
   if (loading || subscription === null) return null;
 
-  if (!subscription) return <Plans products = {products}  />;
+  if (!subscription) return <Plans products={products}  />;
 
   return (
     <div className="relative h-screen bg-gradient-to-b lg:h-[140vh]">

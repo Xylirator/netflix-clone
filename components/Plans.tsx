@@ -2,16 +2,26 @@ import { CheckIcon } from "@heroicons/react/24/solid";
 import { Product } from "@stripe/firestore-stripe-payments";
 import Head from "next/head";
 import Link from "next/link";
+import { useState } from "react";
 import useAuth from "../hooks/useAuth";
+import { loadCheckout } from "../lib/stripe";
+import Loader from "./Loader";
+import Table from "./Table";
 
 interface Props {
-  products: Product[]
+  products: Product[];
 }
 
-
-function Plans({products}: Props) {
+function Plans({ products }: Props) {
   const { logout, user } = useAuth();
+  const [selectedPlan, setSelectedPlan] = useState<Product>(products[2]);
+  const [isBillingLoading, setBillingLoading] = useState(false)
 
+  const subscribeToPlan = () => {
+    if (!user) return
+
+    loadCheckout(selectedPlan?.prices[0].id!)
+  }
   return (
     <div>
       <Head>
@@ -57,20 +67,32 @@ function Plans({products}: Props) {
         </ul>
 
         <div className="mt-4 flex flex-col space-y-4">
-          <div className="flex w-full items-center  self-end md:w-3/5">
-            <div className="planBox">
-                Standard
-            </div>
-            <div className="planBox">
-                Standard
-            </div>
-            <div className="planBox">
-                Standard
-            </div>
+          <div className="flex w-full items-center justify-end self-end md:w-3/5">
+            {products.map((plans) => (
+              <div
+                key={plans.id}
+                className={`planBox ${
+                  selectedPlan?.id === plans.id ? `opacity100` : `opacity-60`
+                }`}
+                onClick={() => setSelectedPlan(plans)}
+              >
+                {plans.name}{" "}
+              </div>
+            ))}
           </div>
-          {/* <Table/> */}
-          <button>
-            Subscribe
+          <Table products={products} selectedPlan={selectedPlan} />
+          <button
+            disabled={!selectedPlan || isBillingLoading}
+            className={`mx-auto w-11/12 rounded bg-[#E50914] py-4 text-xl shadow hover:bg-[#f6121d] md:w-[420px] ${
+              isBillingLoading && 'opacity-60'
+            }`}
+            onClick={subscribeToPlan}
+          >
+            {isBillingLoading ? (
+              <Loader color="dark:fill-gray-300" />
+            ) : (
+              'Subscribe'
+            )}
           </button>
         </div>
       </main>
