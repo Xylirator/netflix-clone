@@ -20,5 +20,18 @@ const loadCheckout = async (priceId: string) => {
     .catch((error) => console.log(error.message));
 };
 
-export {loadCheckout}
-export default payments
+const goToBillingPortal = async () => {
+  const instance = getFunctions(app, `australia-southeast1`);
+  const functionRef = httpsCallable(
+    instance,
+    'ext-firestore-stripe-payments-createPortalLink'
+  );
+
+  await functionRef({
+    returnUrl: `${window.location.origin}/account`,
+  })
+    .then(({ data }: any) => window.location.assign(data.url))
+    .catch((error) => console.log(error.message));
+};
+export { loadCheckout, goToBillingPortal };
+export default payments;
