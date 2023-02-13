@@ -6,7 +6,7 @@ import Membership from "../components/Membership";
 import useAuth from "../hooks/useAuth";
 import useSubscription from "../hooks/useSubscription";
 import payments, { goToBillingPortal } from "../lib/stripe";
-
+ 
 interface Props {
   products: Product[];
 }
