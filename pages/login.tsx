@@ -32,7 +32,7 @@ function login() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Image
-        src="https://rb.gy/p2hphi"
+        src="/images/netflix-background.jpg"
         fill
         className="-z-10 !hidden opacity-60 sm:!inline"
         style={{ objectFit: "cover" }}
