@@ -26,10 +26,10 @@ function Table({ products, selectedPlan }: Props) {
           <td className="tableDataTitle">Video Quality</td>
           {products.map((plans) => (
             <td
-              key={plans.id}
-              className={`tableDataFeature ${
-                selectedPlan?.id === plans.id ? "text-[#e50914]" : "text-[gray]"
-              }`}
+            className={`tableDataFeature ${
+              selectedPlan?.id === plans.id ? "text-[#e50914]" : "text-[gray]"
+            }`}
+            key={plans.id}
             >
               {plans.metadata.videoQuality}
             </td>
@@ -39,10 +39,10 @@ function Table({ products, selectedPlan }: Props) {
           <td className="tableDataTitle">Resolution</td>
           {products.map((plans) => (
             <td
+            className={`tableDataFeature ${
+              selectedPlan?.id === plans.id ? "text-[#e50914]" : "text-[gray]"
+            }`}
               key={plans.id}
-              className={`tableDataFeature ${
-                selectedPlan?.id === plans.id ? "text-[#e50914]" : "text-[gray]"
-              }`}
             >
               {plans.metadata.resolution}
             </td>
@@ -52,10 +52,10 @@ function Table({ products, selectedPlan }: Props) {
           <td className="tableDataTitle">Watch on any device</td>
           {products.map((plans) => (
             <td
-              key={plans.id}
-              className={`tableDataFeature ${
-                selectedPlan?.id === plans.id ? "text-[#e50914]" : "text-[gray]"
-              }`}
+            className={`tableDataFeature ${
+              selectedPlan?.id === plans.id ? "text-[#e50914]" : "text-[gray]"
+            }`}
+            key={plans.id}
             >
               {plans.metadata.devices === 'true' && (
                 <CheckIcon className="inline-block h-8 w-8"/>
