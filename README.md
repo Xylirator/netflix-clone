@@ -23,5 +23,12 @@ yarn create next-app --example with-tailwindcss with-tailwindcss-app
 ```bash
 pnpm create next-app --example with-tailwindcss with-tailwindcss-app
 ```
+## How to Login?
+* Username: `guest@gmail.com`
+* Password: `guest123`
+---
+If you would like to login with your own information, please use one of the following test cards:
+* Visa: 4242 4242 4242 4242 424 04/24
+* Mastercard: 5555 5555 5555 4444 545 05/25
 
 Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
