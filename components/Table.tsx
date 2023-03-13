@@ -13,10 +13,10 @@ function Table({ products, selectedPlan }: Props) {
           <td className="tableDataTitle">Monthly Price</td>
           {products.map((plans) => (
             <td
-              key={plans.id}
-              className={`tableDataFeature ${
-                selectedPlan?.id === plans.id ? "text-[#e50914]" : "text-[gray]"
-              }`}
+            className={`tableDataFeature ${
+              selectedPlan?.id === plans.id ? "text-[#e50914]" : "text-[gray]"
+            }`}
+            key={plans.id}
             >
               AUD{plans.prices[0].unit_amount! / 100}
             </td>
